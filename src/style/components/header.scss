@@ -1,0 +1,99 @@
+@use "../abstracts/_index" as *;
+
+#header {
+  border-top: 1px solid $color-white;
+  border-bottom: 1px solid $color-white;
+  display: grid;
+  grid-template-columns: min_vw(106) 1fr;
+  height: min_vw(106);
+
+  .logo {
+    @include font-style(min_vw(24), 0, 10, bold);
+    grid-column: 1;
+    height: 100%;
+    border-right: 1px solid $color-white;
+    @include flex(center, center);
+  }
+
+  .text {
+    @include font-style(0, 0, 10, 0);
+    grid-column: 2;
+    @include flex(center);
+    margin-left: min_vw(50);
+  }
+
+  .btn-menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: min_vw(106);
+    height: min_vw(106);
+    border-top: 1px solid $color-white;
+    border-left: 1px solid $color-white;
+    border-bottom: 1px solid $color-white;
+    cursor: pointer;
+    z-index: 10;
+    overflow: hidden;
+    @include flex(center, center);
+
+    .dots {
+      position: relative;
+      width: min_vw(34);
+      height: min_vw(34);
+      @include flex(center, center);
+      span {
+        display: block;
+        width: min_vw(6);
+        height: min_vw(6);
+        background-color: $color-orange;
+        transition: width 0.3s ease, transform 0.3s ease, opacity 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+        &:first-child {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, 0%);
+        }
+        &:last-child {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translate(-50%, 0%);
+        }
+      }
+    }
+
+    &.is-active {
+      .dots {
+        span {
+          width: min_vw(146);
+          height: 1px;
+          background-color: $color-white;
+
+          &:nth-child(2) {
+            opacity: 0; // 中央の点を消す
+          }
+          &:first-child {
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+          &:last-child {
+            bottom: 50%;
+            transform: translate(-50%, 50%) rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+
+  #btn-menu-open {
+    background-color: $color-black;
+    @media (any-hover: hover) {
+      &:hover {
+        .dots span {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,26 @@
+---
+// NavItem.astro
+interface Props {
+	items: { href: string; title: string }[];
+	title: string;
+	subtitle?: string; // サブタイトルはオプショナルにする
+}
+
+const { items, title, subtitle } = Astro.props;
+---
+
+<li class="nav-item">
+	<p class="ttl">
+		{title}
+		{subtitle && <span class="_oval">{subtitle}</span>}
+	</p>
+	<ul class="nav-link">
+		{
+			items.map((item) => (
+				<li>
+					<a href={item.href}>{item.title}</a>
+				</li>
+			))
+		}
+	</ul>
+</li>

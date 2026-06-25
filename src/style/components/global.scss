@@ -1,0 +1,29 @@
+@use "../abstracts/_index" as *;
+
+//
+// global
+//
+@include mq-min {
+	._sp {
+		display: none !important
+	}
+}
+
+@include mq-max {
+	._pc {
+		display: none !important
+	}
+}
+
+._cl-or {
+	color: $color-orange;
+}
+
+._indent {
+	text-indent: -1em;
+	padding-left: 1em;
+}
+
+._inner {
+	@include inner();
+}

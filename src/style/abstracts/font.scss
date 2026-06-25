@@ -1,0 +1,68 @@
+//
+// font
+//
+
+$font-family-gothic: "Noto Sans JP", "Hiragino Kaku Gothic Pro", "Meiryo, Osaka", "MS PGothic", Arial, Helvetica, Verdana, sans-serif;
+$font-family-en: "Roboto Mono", monospace, Arial, Helvetica, Verdana, sans-serif;
+
+$extra-light: 200;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+
+// 本文
+@mixin font-gothic() {
+	font-family: $font-family-gothic;
+	font-weight: $regular;
+}
+
+// 本文英字
+@mixin font-en() {
+	font-family: $font-family-en;
+	font-weight: 700;
+}
+
+@mixin font-style($font-size: 0, $line-height: 0, $letter-spacing: 0, $font-weight: 0, $font-family: 0) {
+	@if $font-size !=0 {
+		font-size: $font-size;
+	}
+
+	@if $line-height !=0 {
+		line-height: $line-height;
+	}
+
+	@if $letter-spacing !=0 {
+		letter-spacing: calc(#{calc($letter-spacing / 1000)} * 1em);
+	}
+
+  @if $font-weight == regular {
+		font-weight: $regular;
+	}
+  @else if $font-weight == light {
+		font-weight: $light;
+	}
+  @else if $font-weight == extra-light {
+		font-weight: $extra-light;
+	}
+  @else if $font-weight == medium {
+		font-weight: $medium;
+	}
+  @else if $font-weight == semi-bold {
+		font-weight: $semi-bold;
+	}
+  @else if $font-weight == bold {
+		font-weight: $bold;
+	}
+	@else if $font-weight !=0 {
+		font-weight: $font-weight;
+	}
+
+  @if $font-family == en {
+		font-family: $font-family-en;
+	}
+	@else if $font-family !=0 {
+		font-family: $font-family;
+	}
+}

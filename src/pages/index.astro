@@ -1,0 +1,135 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Img from "~/components/abstracts/Img.astro";
+import Svg from "~/components/abstracts/Svg.astro";
+
+const page = {
+  title: "ポートフォリオサイト",
+  description: "STのポートフォリオサイトです。",
+  bodyClass: "home",
+  sitename: "",
+};
+---
+
+<Layout
+  title={page.title}
+  description={page.description}
+  bodyClass={page.bodyClass}
+  sitename={page.sitename}
+>
+  <section id="about">
+    <div class="aside">
+      <h2>ABOUT</h2>
+      <div class="scroll">
+        <a href="#works">SCROLL</a>
+      </div>
+    </div>
+    <div class="content">
+      <Img
+        srcPaths={["pages/demo.png"]}
+        alt="KVイメージ画像"
+        classNames="image"
+      />
+      <div class="text-warp">
+        <p class="lead">
+          ユーザー体験を大切に コンセプトに沿った<br />心地の良い
+          Webサイトを構築します。
+        </p>
+        <dl>
+          <dt>NAME</dt>
+          <dd>SATOKA TOGAWA</dd>
+          <dt>LOCATION</dt>
+          <dd>Kyoto, Japan</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="works">
+    <div class="aside">
+      <h2>WORKS</h2>
+    </div>
+    <div class="content">
+      <ul>
+        <li>
+          <h3>ブランドサイト<br />CITIZEN PROMASTER</h3>
+          <Img
+            srcPaths={["pages/demo-works.jpg"]}
+            alt="CITIZEN PROMASTER"
+            classNames="image"
+          />
+        </li>
+        <li>
+          <h3>ブランドサイト<br />CITIZEN PROMASTER</h3>
+          <Img
+            srcPaths={["pages/demo-works.jpg"]}
+            alt="CITIZEN PROMASTER"
+            classNames="image"
+          />
+        </li>
+        <li>
+          <h3>ブランドサイト<br />CITIZEN PROMASTER</h3>
+          <Img
+            srcPaths={["pages/demo-works.jpg"]}
+            alt="CITIZEN PROMASTER"
+            classNames="image"
+          />
+        </li>
+        <li>
+          <h3>ブランドサイト<br />CITIZEN PROMASTER</h3>
+          <Img
+            srcPaths={["pages/demo-works.jpg"]}
+            alt="CITIZEN PROMASTER"
+            classNames="image"
+          />
+        </li>
+        <li>
+          <h3>ブランドサイト<br />CITIZEN PROMASTER</h3>
+          <Img
+            srcPaths={["pages/demo-works.jpg"]}
+            alt="CITIZEN PROMASTER"
+            classNames="image"
+          />
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="aside">
+      <h2>SKILLS</h2>
+    </div>
+    <div class="content">
+      <dl>
+        <div>
+          <dt>FRONTEND</dt>
+          <dd>HTML</dd>
+          <dd>CSS / Scss</dd>
+          <dd>Javascript</dd>
+          <dd>Typescript</dd>
+        </div>
+        <div>
+          <dt>CMS</dt>
+          <dd>WordPress</dd>
+          <dd>Movable Type</dd>
+          <dd>カラーミーショップ</dd>
+          <dd>makeshop</dd>
+          <dd>STUDIO</dd>
+        </div>
+        <div>
+          <dt>DESIGN TOOLS</dt>
+          <dd>Figma</dd>
+          <dd>Photoshop</dd>
+          <dd>Illustrator</dd>
+          <dd>XD</dd>
+        </div>
+        <div>
+          <dt>DEVELOPMENT</dt>
+          <dd>Astro</dd>
+          <dd>Git / FitHub</dd>
+          <dd>Notion</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</Layout>

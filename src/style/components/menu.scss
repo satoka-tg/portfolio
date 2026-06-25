@@ -1,0 +1,83 @@
+@use "../abstracts/_index" as *;
+
+#menu {
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  background: transparent;
+  overflow: hidden;
+  transition:
+    display 0.4s ease allow-discrete,
+    overlay 0.4s ease allow-discrete;
+
+  &::backdrop {
+    background: rgba(#000, 0.5);
+    opacity: 0;
+    transition:
+      opacity 0.4s ease,
+      display 0.4s ease allow-discrete,
+      overlay 0.4s ease allow-discrete;
+  }
+
+  &:open::backdrop {
+    opacity: 1;
+  }
+
+  .menu-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min_vw(584);
+    height: 100%;
+    background: $color-orange;
+    @include flex(center, center);
+
+    translate: 100% 0;
+    opacity: 0;
+    transition:
+      translate 0.4s ease,
+      opacity 0.3s ease;
+
+    @include mq-max {
+      width: 100%;
+    }
+  }
+
+  &:open .menu-inner {
+    translate: 0 0;
+    opacity: 1;
+  }
+
+  @starting-style {
+    &:open .menu-inner {
+      translate: 100% 0;
+      opacity: 0;
+    }
+    &:open::backdrop {
+      opacity: 0;
+    }
+  }
+
+  li {
+    + li {
+      margin-top: clamp_vw(50);
+    }
+    a {
+      display: block;
+      color: $color-black;
+      text-align: center;
+      transition: color .3s ease;
+      @include font-style(clamp_vw(30), 100%, 5, $bold);
+      @media (any-hover: hover) {
+        &:hover {
+          color: $color-white;
+        }
+      }
+    }
+  }
+}

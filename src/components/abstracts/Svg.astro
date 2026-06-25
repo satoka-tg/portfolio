@@ -1,0 +1,42 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+
+type Props = {
+	srcPaths: [string, string?];
+	classNames?: string;
+	alt?: string;
+	loading?: 'lazy' | 'eager';
+};
+
+const { srcPaths, classNames, alt = '', loading = 'lazy' } = Astro.props;
+
+const importImage = async (src: string) => {
+	const imageFile = import.meta.glob<{ default: ImageMetadata }>('/src/images/**/*');
+
+	if (!imageFile[`/src/images/${src}`]) return;
+	const moduleImage = await imageFile[`/src/images/${src}`]();
+
+	const { default: imageSrc } = moduleImage;
+
+	// 通常画像を取得
+	return {
+		originalSrc: imageSrc.src,
+		width: imageSrc.width, // 追加: 幅を取得
+		height: imageSrc.height, // 追加: 高さを取得
+	};
+};
+
+const importImages = async () => {
+	return Promise.all(
+		srcPaths.map(async (src) => {
+			if (!src) return;
+			return importImage(src);
+		})
+	);
+};
+
+const images = await importImages();
+---
+
+<img src={images[0]?.originalSrc} class:list={[classNames]} loading={loading} alt={alt} width={images[0]?.width} height={images[0]?.height} />

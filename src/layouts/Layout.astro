@@ -1,0 +1,55 @@
+---
+import "~/style/style.scss";
+import Header from "~/components/common/Header.astro";
+import Footer from "~/components/common/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  bodyClass: string;
+  sitename?: string;
+}
+
+const { title, description, bodyClass, sitename } = Astro.props;
+const pageTitleName = sitename ? `${title} | ${sitename}` : title;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{pageTitleName}</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="format-detection" content="telephone=on" />
+    <meta name="description" content={description} />
+    <meta property="og:site_name" content={pageTitleName} />
+    <meta property="og:title" content={pageTitleName} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="######" />
+    <meta property="og:image" content="######/ogp.jpg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Roboto+Mono:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class={bodyClass}>
+    <div id="wrapper">
+      <Header slot="header" bodyClass={bodyClass} />
+      <main>
+        <slot />
+      </main>
+      <Footer slot="footer" />
+    </div>
+  </body>
+
+  <script>
+    import "~/js/common";
+  </script>
+</html>

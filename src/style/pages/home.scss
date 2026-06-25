@@ -1,0 +1,227 @@
+@use "../abstracts/_index" as *;
+
+// common
+section {
+  display: grid;
+  grid-template-columns: min_vw(106) 1fr;
+  border-bottom: 1px solid $color-white;
+}
+
+.aside {
+  grid-column: 1;
+  width: min_vw(106);
+  border-right: 1px solid $color-white;
+  @include flex(center,between);
+  flex-direction: column;
+  padding-block: min_vw(50);
+}
+
+.content {
+  grid-column: 2;
+  padding-inline: min_vw(70) min_vw(106);
+}
+
+h2 {
+  color: $color-orange;
+  @include font-style(0,0,50,bold);
+  writing-mode: vertical-rl;
+}
+
+.scroll {
+  position: relative;
+  a {
+    color: $color-orange;
+    @include font-style(clamp_vw(12),0,5,semi-bold);
+    writing-mode: vertical-rl;
+    padding: 0 min_vw(-4) min_vw(42) min_vw(12);
+  }
+
+  &::before{
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: $color-white;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -.2rem;
+    width: .6rem;
+    height: .6rem;
+    border-radius: 50%;
+    background: $color-orange;
+    animation:
+      circlemove 2.8s ease-in-out infinite,
+      cirlemovehide 2.8s ease-out infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes circlemove{
+  0% {
+    bottom: 100%;
+  }
+  30% {
+    bottom: 100%;
+  }
+  70% {
+    bottom: 0;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes cirlemovehide{
+  0%{opacity:0}
+  20%{opacity:1;}
+  70%{opacity:0.9;}
+  80%{opacity:0;}
+  100%{opacity:0;}
+}
+
+
+// about
+#about {
+  position: relative;
+  .image {
+    width: vw(659);
+    margin: vw(55) 0 vw(50) auto;
+  }
+  .text-warp {
+    @include flex(end,between);
+    padding-bottom: min_vw(50);
+  }
+  .lead {
+    @include font-style(vw(24),200%);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    gap: 1.5em vw(86);
+    dt {
+      @include font-style(0,0,5,bold);
+    }
+    dd {
+      @include font-style(clamp_vw_vw(14),0,0,medium);
+    }
+  }
+}
+
+// works
+#works {
+  ul {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    transition: grid-template 0.8s ease;
+    overflow: hidden;
+    height: vw(670);
+    counter-reset: num;
+    margin-block: vw(100);
+    &:has(li:nth-of-type(1):hover){
+      grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    }
+    &:has(li:nth-of-type(2):hover){
+      grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+    }
+    &:has(li:nth-of-type(3):hover){
+      grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+    }
+    &:has(li:nth-of-type(4):hover){
+      grid-template-columns: 1fr 1fr 1fr 3fr 1fr;
+    }
+    &:has(li:nth-of-type(5):hover){
+      grid-template-columns: 1fr 1fr 1fr 1fr 3fr;
+    }
+    &:has(li:not(:nth-of-type(1)):hover) {
+      li:nth-of-type(1) h3 {
+        opacity: 0;
+      }
+    }
+    &:not(:has(li:not(:nth-of-type(1)):hover)) {
+      li:nth-of-type(1) h3 {
+        opacity: 1;
+        transition-delay: 0.5s;
+      }
+    }
+
+    li {
+      position: relative;
+      padding: min_vw(46) min_vw(36);
+      counter-increment: num;
+      cursor: pointer;
+      @include flex(0,end);
+      flex-direction: column;
+      gap: min_vw(27);
+      &::before {
+        position: absolute;
+        content: "";
+        inset: 0;
+        background: linear-gradient(to bottom,  rgba(22,20,15,0.1) 0%,rgba(22,20,15,1) 70%,rgba(22,20,15,1) 100%);
+        z-index: 1;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.8s;
+      }
+      &::after {
+        position: relative;
+        display: block;
+        content: counter(num, decimal-leading-zero);
+        @include font-style(min_vw(96),100%,-50,extra-light,en);
+        z-index: 1;
+      }
+      h3 {
+        position: relative;
+        z-index: 1;
+        color: $color-orange;
+        opacity: 0;
+        transition: opacity 0.3s;
+        @include font-style(min_vw(20),200%);
+      }
+      .image {
+        position: absolute;
+        inset: 0;
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      &:hover {
+        h3 {
+          opacity: 1;
+          transition: opacity 0.3s 0.5s;
+        }
+        &::before {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+
+// skills
+#skills {
+  dl {
+    padding-block: min_vw(77) min_vw(100);
+    margin-right: min_vw(70);
+    @include flex(0,between);
+    dt {
+      font-weight: $bold;
+      letter-spacing: 0.05em;
+      margin-bottom: min_vw(48);
+    }
+    dd {
+      letter-spacing: 0.05em;
+      margin-top: min_vw(32);
+    }
+  }
+}

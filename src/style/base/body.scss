@@ -1,0 +1,26 @@
+@use "../abstracts/_index" as *;
+
+//
+// body
+//
+body {
+	min-width: 100%;
+	width: 100%;
+	color: $color-white;
+	background: $color-black;
+	@include font-gothic;
+	@include font-style(clamp_vw(16), 100%);
+	-webkit-text-size-adjust: 100%;
+	overflow-wrap: anywhere;
+	word-break: normal;
+	line-break: strict;
+	// font-feature-settings: "palt";
+
+	@include mq-max {
+		font-size: vw(16, $sp);
+	}
+}
+
+#wrapper {
+	position: relative;
+}

@@ -1,0 +1,44 @@
+---
+const navItems = [
+  { label: "ABOUT", path: "#about" },
+  { label: "WORKS", path: "#works" },
+  { label: "SKILLS", path: "#skills" },
+  { label: "CONTACT", path: "#footer" },
+];
+---
+
+<header id="header">
+  <p class="logo">ST</p>
+  <p class="text">Front End Engineer</p>
+
+  <button class="btn-menu" id="btn-menu-open" aria-label="メニューを開く">
+    <div class="dots" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <dialog id="menu">
+    <button class="btn-menu" id="btn-menu-close" aria-label="メニューを閉じる">
+      <div class="dots" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+    <div class="menu-inner">
+      <nav aria-label="メインメニュー">
+        <ul>
+          {
+            navItems.map((item) => (
+              <li>
+                <a href={item.path}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </dialog>
+</header>

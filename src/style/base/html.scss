@@ -1,0 +1,22 @@
+@use "../abstracts/_index" as *;
+
+//
+// html
+//
+html {
+	font-size: 62.5%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	.anchor {
+		scroll-margin-top: 12.0rem;
+
+		@include mq-max {
+			scroll-margin-top: vw(51, $sp);
+		}
+	}
+}
