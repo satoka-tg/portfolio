@@ -1,0 +1,204 @@
+---
+import Img from "~/components/abstracts/Img.astro";
+
+type Work = {
+  title: string;
+  url: string;
+  image: string;
+  categories: string[];
+  period: string;
+  overview: string;
+  role: string[];
+  challenge: string;
+  approach: string;
+  result: string;
+  technologies: string[];
+};
+
+const worksData: Work[] = [
+  {
+    title: "CITIZEN PROMASTER",
+    url: "https://...",
+    image: "pages/demo-works.jpg",
+    categories: ["ブランドサイト", "リニューアル"],
+    period: "2019年〜2026年",
+    overview:
+      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
+    role: ["コーディング", "Webディレクション"],
+    challenge:
+      "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
+    approach:
+      "対応ブラウザに合わせ可能な限り最新の記述で実装しつつ、更新のしやすさも考慮した設計を心がけました。外部エンジニアへの依頼時はGoogleスライドで詳細を連携し、認識のずれを防ぎました。",
+    result:
+      "アニメーションやレスポンシブ実装について先方ディレクター・デザイナーから完成度の高さを評価され、担当以降も継続的に依頼をいただいています。",
+    technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
+  },
+  {
+    title: "CITIZEN PROMASTER",
+    url: "https://...",
+    image: "pages/demo-works.jpg",
+    categories: ["ブランドサイト", "リニューアル"],
+    period: "2019年〜2026年",
+    overview:
+      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
+    role: ["コーディング", "Webディレクション"],
+    challenge:
+      "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
+    approach:
+      "対応ブラウザに合わせ可能な限り最新の記述で実装しつつ、更新のしやすさも考慮した設計を心がけました。外部エンジニアへの依頼時はGoogleスライドで詳細を連携し、認識のずれを防ぎました。",
+    result:
+      "アニメーションやレスポンシブ実装について先方ディレクター・デザイナーから完成度の高さを評価され、担当以降も継続的に依頼をいただいています。",
+    technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
+  },
+  {
+    title: "CITIZEN PROMASTER",
+    url: "https://...",
+    image: "pages/demo-works.jpg",
+    categories: ["ブランドサイト", "リニューアル"],
+    period: "2019年〜2026年",
+    overview:
+      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
+    role: ["コーディング", "Webディレクション"],
+    challenge:
+      "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
+    approach:
+      "対応ブラウザに合わせ可能な限り最新の記述で実装しつつ、更新のしやすさも考慮した設計を心がけました。外部エンジニアへの依頼時はGoogleスライドで詳細を連携し、認識のずれを防ぎました。",
+    result:
+      "アニメーションやレスポンシブ実装について先方ディレクター・デザイナーから完成度の高さを評価され、担当以降も継続的に依頼をいただいています。",
+    technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
+  },
+  {
+    title: "CITIZEN PROMASTER",
+    url: "https://...",
+    image: "pages/demo-works.jpg",
+    categories: ["ブランドサイト", "リニューアル"],
+    period: "2019年〜2026年",
+    overview:
+      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
+    role: ["コーディング", "Webディレクション"],
+    challenge:
+      "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
+    approach:
+      "対応ブラウザに合わせ可能な限り最新の記述で実装しつつ、更新のしやすさも考慮した設計を心がけました。外部エンジニアへの依頼時はGoogleスライドで詳細を連携し、認識のずれを防ぎました。",
+    result:
+      "アニメーションやレスポンシブ実装について先方ディレクター・デザイナーから完成度の高さを評価され、担当以降も継続的に依頼をいただいています。",
+    technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
+  },
+  {
+    title: "CITIZEN PROMASTER",
+    url: "https://...",
+    image: "pages/demo-works.jpg",
+    categories: ["ブランドサイト", "リニューアル"],
+    period: "2019年〜2026年",
+    overview:
+      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
+    role: ["コーディング", "Webディレクション"],
+    challenge:
+      "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
+    approach:
+      "対応ブラウザに合わせ可能な限り最新の記述で実装しつつ、更新のしやすさも考慮した設計を心がけました。外部エンジニアへの依頼時はGoogleスライドで詳細を連携し、認識のずれを防ぎました。",
+    result:
+      "アニメーションやレスポンシブ実装について先方ディレクター・デザイナーから完成度の高さを評価され、担当以降も継続的に依頼をいただいています。",
+    technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
+  },
+];
+---
+
+<section id="works">
+  <div class="aside">
+    <h2>WORKS</h2>
+  </div>
+  <div class="content">
+    <ul class="works-list">
+      {
+        worksData.map((work, index) => (
+          <li>
+            <button
+              class="item"
+              data-index={index}
+              aria-haspopup="dialog"
+              aria-label={`${work.title}の詳細を見る`}
+            >
+              <h3>{work.title}</h3>
+              <Img
+                srcPaths={[work.image]}
+                alt={work.title}
+                classNames="image"
+              />
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+{
+  worksData.map((work, index) => (
+    <dialog id={`modal-${index}`} class="modal">
+      <div class="modal-inner">
+        <div class="modal-image">
+          <Img srcPaths={[work.image]} alt={work.title} classNames="image" />
+        </div>
+        <div class="modal-cont">
+          <button class="modal-close" aria-label="閉じる">
+            <span />
+            <span />
+          </button>
+          <div class="modal-header">
+            <p class="modal-index">{String(index + 1).padStart(2, "0")}</p>
+            <h3>
+              <a href={work.url} target="_blank" rel="noopener noreferrer">
+                {work.title}
+              </a>
+            </h3>
+            <ul class="modal-categories">
+              {work.categories.map((c) => (
+                <li>{c}</li>
+              ))}
+            </ul>
+            <p class="modal-period">{work.period}</p>
+          </div>
+          <dl class="modal-body">
+            <div class="modal-row">
+              <dt>概要</dt>
+              <dd>{work.overview}</dd>
+            </div>
+            <div class="modal-row">
+              <dt>担当</dt>
+              <dd>
+                <ul>
+                  {work.role.map((r) => (
+                    <li>{r}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+            <div class="modal-row">
+              <dt>課題</dt>
+              <dd>{work.challenge}</dd>
+            </div>
+            <div class="modal-row">
+              <dt>アプローチ</dt>
+              <dd>{work.approach}</dd>
+            </div>
+            <div class="modal-row">
+              <dt>成果</dt>
+              <dd>{work.result}</dd>
+            </div>
+            <div class="modal-row">
+              <dt>使用技術</dt>
+              <dd>
+                <ul class="modal-technologies">
+                  {work.technologies.map((t) => (
+                    <li>{t}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </dialog>
+  ))
+}

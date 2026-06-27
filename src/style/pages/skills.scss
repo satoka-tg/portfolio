@@ -1,0 +1,18 @@
+@use "../abstracts/_index" as *;
+
+#skills {
+  dl {
+    padding-block: min_vw(77) min_vw(100);
+    margin-right: min_vw(70);
+    @include flex(0,between);
+    dt {
+      font-weight: $bold;
+      letter-spacing: 0.05em;
+      margin-bottom: min_vw(48);
+    }
+    dd {
+      letter-spacing: 0.05em;
+      margin-top: min_vw(32);
+    }
+  }
+}

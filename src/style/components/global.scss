@@ -27,3 +27,88 @@
 ._inner {
 	@include inner();
 }
+
+section {
+  display: grid;
+  grid-template-columns: min_vw(106) 1fr;
+  border-bottom: 1px solid $color-white;
+}
+
+.aside {
+  grid-column: 1;
+  width: min_vw(106);
+  border-right: 1px solid $color-white;
+  @include flex(center,between);
+  flex-direction: column;
+  padding-block: min_vw(50);
+}
+
+.content {
+  grid-column: 2;
+  padding-inline: min_vw(70) min_vw(106);
+}
+
+h2 {
+  color: $color-orange;
+  @include font-style(0,0,50,bold);
+  writing-mode: vertical-rl;
+}
+
+.scroll {
+  position: relative;
+  a {
+    color: $color-orange;
+    @include font-style(clamp_vw(12),0,5,semi-bold);
+    writing-mode: vertical-rl;
+    padding: 0 min_vw(-4) min_vw(42) min_vw(12);
+  }
+
+  &::before{
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: $color-white;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -.2rem;
+    width: .6rem;
+    height: .6rem;
+    border-radius: 50%;
+    background: $color-orange;
+    animation:
+      circlemove 2.8s ease-in-out infinite,
+      cirlemovehide 2.8s ease-out infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes circlemove{
+  0% {
+    bottom: 100%;
+  }
+  30% {
+    bottom: 100%;
+  }
+  70% {
+    bottom: 0;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes cirlemovehide{
+  0%{opacity:0}
+  20%{opacity:1;}
+  70%{opacity:0.9;}
+  80%{opacity:0;}
+  100%{opacity:0;}
+}

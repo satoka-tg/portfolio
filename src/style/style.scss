@@ -14,5 +14,8 @@
 @use "./components/footer";
 @use "./components/header";
 @use "./components/menu";
+@use "./components/modal";
 
-@use "./pages/home";
+@use "./pages/about";
+@use "./pages/works";
+@use "./pages/skills";

@@ -1,0 +1,106 @@
+<section id="about">
+  <div class="aside">
+    <h2>ABOUT</h2>
+    <div class="scroll">
+      <a href="#works">SCROLL</a>
+    </div>
+  </div>
+  <div class="content">
+    <div class="image">
+      <canvas id="c" width="420" height="420" style="max-width:100%;"></canvas>
+    </div>
+    <script>
+      const canvas = document.getElementById("c");
+      const ctx = canvas.getContext("2d");
+      const W = 420,
+        H = 420,
+        CX = W / 2,
+        CY = H / 2;
+      const barColor = "#ffffff";
+
+      const BAR_COUNT = 90;
+      const INNER_R = 78;
+      const DOT_SIZE = 4.2; // 四角のサイズ
+      const DOT_GAP = 7.2;
+      const MIN_DOTS = 2;
+      const MAX_DOTS = 13;
+      const LINE_DOTS = 4;
+      const LINE_WIDTH = 1.6;
+      const BAR_SPACING = 0.72;
+
+      const prev = new Float32Array(BAR_COUNT);
+
+      const bars = Array.from({ length: BAR_COUNT }, (_, i) => {
+        const seed = i * 2.399;
+        return {
+          phase: seed,
+          freq: 0.8 + (Math.sin(seed * 1.3) * 0.5 + 0.5) * 1.4,
+          base: 4 + (Math.sin(seed * 0.7) * 0.5 + 0.5) * 3,
+          amp: 3 + (Math.sin(seed * 2.1) * 0.5 + 0.5) * 5,
+        };
+      });
+
+      let t = 0;
+      function animate() {
+        ctx.clearRect(0, 0, W, H);
+        t += 0.008;
+
+        for (let i = 0; i < BAR_COUNT; i++) {
+          const b = bars[i];
+          const angle = (i / BAR_COUNT) * Math.PI * 2 - Math.PI / 2;
+          const cos = Math.cos(angle);
+          const sin = Math.sin(angle);
+
+          const raw = b.base + b.amp * Math.sin(b.freq * t + b.phase);
+          prev[i] = prev[i] * 0.75 + raw * 0.25;
+          const dotCount = Math.max(
+            MIN_DOTS,
+            Math.min(MAX_DOTS, Math.round(prev[i])),
+          );
+
+          // 線部分
+          const lineEnd = Math.min(LINE_DOTS, dotCount);
+          const r0 = INNER_R;
+          const r1 = INNER_R + (lineEnd - 1) * DOT_GAP;
+          ctx.beginPath();
+          ctx.moveTo(CX + r0 * cos, CY + r0 * sin);
+          ctx.lineTo(CX + r1 * cos, CY + r1 * sin);
+          ctx.strokeStyle = barColor;
+          ctx.lineWidth = LINE_WIDTH;
+          ctx.lineCap = "round";
+          ctx.stroke();
+
+          // 四角ドット部分（棒の向きに合わせて回転）
+          ctx.fillStyle = barColor;
+          for (let d = LINE_DOTS; d < dotCount; d++) {
+            const r = INNER_R + d * DOT_GAP;
+            const x = CX + r * cos;
+            const y = CY + r * sin;
+            const s = DOT_SIZE * BAR_SPACING;
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.fillRect(-s / 2, -s / 2, s, s);
+            ctx.restore();
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    </script>
+
+    <div class="text-warp">
+      <p class="lead">
+        ユーザー体験を大切に コンセプトに沿った<br />心地の良い
+        Webサイトを構築します。
+      </p>
+      <dl>
+        <dt>NAME</dt>
+        <dd>SATOKA TOGAWA</dd>
+        <dt>LOCATION</dt>
+        <dd>Kyoto, Japan</dd>
+      </dl>
+    </div>
+  </div>
+</section>

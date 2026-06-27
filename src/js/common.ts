@@ -1,3 +1,3 @@
 // ABC順
-import './current';
 import './menu';
+import './modal';

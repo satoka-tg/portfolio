@@ -1,0 +1,101 @@
+@use "../abstracts/_index" as *;
+
+.modal {
+  border: none;
+  margin: auto min_vw(106) auto min_vw(176);
+  width: auto;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    display 0.4s ease allow-discrete,
+    overlay 0.4s ease allow-discrete;
+
+  &:not([open]) {
+    display: none;
+  }
+  &:open {
+    opacity: 1;
+  }
+
+  @starting-style {
+    &:open {
+      opacity: 0;
+    }
+  }
+
+  &::backdrop {
+    background: rgba(#000, 0.5);
+    opacity: 0;
+    transition:
+      opacity 0.4s ease,
+      display 0.4s ease allow-discrete,
+      overlay 0.4s ease allow-discrete;
+  }
+
+  &:open::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    &:open::backdrop {
+      opacity: 0;
+    }
+  }
+
+  &-inner {
+    position: relative;
+    padding: min_vw(90) min_vw(70);
+    height: 80svh;
+    background: $color-orange;
+    @include flex(0,between);
+    gap: min_vw(90);
+  }
+
+  &-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: min_vw(106);
+    height: min_vw(106);
+    border-top: 1px solid $color-white;
+    border-left: 1px solid $color-white;
+    border-bottom: 1px solid $color-white;
+    cursor: pointer;
+    z-index: 10;
+    overflow: hidden;
+    @include flex(center, center);
+    span {
+      position: absolute;
+      display: block;
+      left: 50%;
+      width: min_vw(146);
+      height: 1px;
+      background-color: $color-white;
+      transition: width 0.3s ease, transform 0.3s ease, opacity 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+      &:first-child {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &:last-child {
+        bottom: 50%;
+        transform: translate(-50%, 50%) rotate(-45deg);
+      }
+    }
+  }
+
+  &-image {
+    width: min_vw(465);
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-cont {
+    flex: 1;
+  }
+
+  &-categories {
+    
+  }
+}
