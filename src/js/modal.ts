@@ -30,4 +30,9 @@ modals.forEach((modal) => {
       modal.close();
     }
   });
+
+  modal.addEventListener("toggle", (e: Event) => {
+    const isOpen = (e.target as HTMLDialogElement).open;
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  });
 });
