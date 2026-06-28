@@ -13,7 +13,7 @@
   }
   .text-warp {
     @include flex(end,between);
-    padding-bottom: min_vw(50);
+    padding-bottom: max_vw(50);
   }
   .lead {
     @include font-style(vw(24),200%);
@@ -28,7 +28,7 @@
       @include font-style(0,0,5,bold);
     }
     dd {
-      @include font-style(clamp_vw_vw(14),0,0,medium);
+      @include font-style(max_vw_vw(14),0,0,medium);
     }
   }
 }

@@ -32,7 +32,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: min_vw(584);
+    width: max_vw(584);
     height: 100%;
     background: $color-orange;
     @include flex(center, center);
@@ -65,14 +65,14 @@
 
   li {
     + li {
-      margin-top: min_vw(50);
+      margin-top: max_vw(50);
     }
     a {
       display: block;
       color: $color-black;
       text-align: center;
       transition: color .3s ease;
-      @include font-style(clamp_vw(30), 100%, 5, $bold);
+      @include font-style(max_vw(30), 100%, 5, $bold);
       @media (any-hover: hover) {
         &:hover {
           color: $color-white;

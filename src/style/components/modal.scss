@@ -2,7 +2,7 @@
 
 .modal {
   border: none;
-  margin: auto min_vw(106) auto min_vw(176);
+  margin: auto vw(106) auto vw(176);
   width: auto;
   opacity: 0;
   transition:
@@ -44,11 +44,11 @@
 
   &-inner {
     position: relative;
-    padding: min_vw(90) min_vw(62) min_vw(90) min_vw(70);
+    padding: max_vw(90) max_vw(62) max_vw(90) max_vw(70);
     height: 80svh;
     background: $color-orange;
     @include flex(0,between);
-    gap: min_vw(90);
+    gap: vw(90);
     overflow: hidden;
   }
 
@@ -56,11 +56,11 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: min_vw(106);
-    height: min_vw(106);
-    border-top: 1px solid $color-white;
-    border-left: 1px solid $color-white;
-    border-bottom: 1px solid $color-white;
+    width: vw(106);
+    height: vw(106);
+    border-top: max_vw(1) solid $color-white;
+    border-left: max_vw(1) solid $color-white;
+    border-bottom: max_vw(1) solid $color-white;
     cursor: pointer;
     z-index: 10;
     overflow: hidden;
@@ -69,8 +69,8 @@
       position: absolute;
       display: block;
       left: 50%;
-      width: min_vw(146);
-      height: 1px;
+      width: max_vw(146);
+      height: max_vw(1);
       background-color: $color-white;
       transition: width 0.3s ease, transform 0.3s ease, opacity 0.3s ease, top 0.3s ease, bottom 0.3s ease;
       &:first-child {
@@ -85,7 +85,7 @@
   }
 
   &-image {
-    width: min_vw(465);
+    width: vw(465);
     img {
       height: 100%;
       object-fit: cover;
@@ -101,20 +101,20 @@
 
   &-index {
     position: relative;
-    text-decoration: underline $color-white solid .3rem;
-    text-underline-offset: .4rem;
-    padding-bottom: .7rem;
+    text-decoration: underline $color-white solid max_vw(3);
+    text-underline-offset: max_vw(4);
+    padding-bottom: max_vw(7);
     @include font-style(0,0,5,$bold);
   }
 
   &-title {
-    margin-top: min_vw(10);
+    margin-top: max_vw(10);
     a {
       position: relative;
       text-decoration: underline;
-      @include font-style(clamp_vw(26),100%,5,$bold);
+      @include font-style(max_vw(26),100%,5,$bold);
       @include flex(center,$display: inline-flex);
-      gap: min_vw(10);
+      gap: max_vw(10);
       transition: color 0.3s ease;
       @media (any-hover: hover) {
         &:hover {
@@ -125,37 +125,37 @@
         display: block;
         content: "";
         @include icn-blank;
-        width: clamp_vw(15);
-        height: clamp_vw(12);
+        width: max_vw(15);
+        height: max_vw(12);
       }
     }
 
   }
 
   &-categories {
-    margin-top: min_vw(20);
+    margin-top: max_vw(20);
     @include flex(0,0,wrap);
-    gap: min_vw(12);
+    gap: max_vw(12);
     li {
-      padding: min_vw(5);
+      padding: max_vw(5);
       background-color: $color-white;
-      @include font-style(clamp_vw(14),100%);
+      @include font-style(max_vw(14),100%);
     }
   }
 
   &-period {
-    margin-top: min_vw(10);
-    @include font-style(clamp_vw(14),100%);
+    margin-top: max_vw(10);
+    @include font-style(max_vw(14),100%);
   }
 
   .modal-detail {
-    margin-top: min_vw(36);
+    margin-top: max_vw(36);
     overflow-y: auto;
     flex: 1;
-    padding-right: min_vw(28);
+    padding-right: max_vw(28);
     // Chrome・Safari・Edge
     &::-webkit-scrollbar {
-      width: .3rem;
+      width: max_vw(3);
     }
 
     &::-webkit-scrollbar-track {
@@ -176,19 +176,19 @@
   }
 
   &-row {
-    border-top: 1px solid $color-black;
-    padding-block: min_vw(24);
+    border-top: max_vw(1) solid $color-black;
+    padding-block: max_vw(24);
     @include flex;
     &:last-child {
-      border-bottom: 1px solid $color-black;
+      border-bottom: max_vw(1) solid $color-black;
     }
     dt {
-      width: calc(4em + min_vw(25));
-      @include font-style(clamp_vw(14),150%,0,$bold);
+      width: calc(4em + max_vw(25));
+      @include font-style(max_vw(14),150%,0,$bold);
     }
     dd {
       flex: 1;
-      @include font-style(clamp_vw(14),150%);
+      @include font-style(max_vw(14),150%);
     }
   }
 }

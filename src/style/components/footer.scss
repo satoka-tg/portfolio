@@ -2,21 +2,21 @@
 
 #footer {
   display: grid;
-  grid-template-columns: min_vw(106) 1fr;
+  grid-template-columns: vw(106) 1fr;
   .content {
     @include flex(center,between);
     .mail {
       position: relative;
       transition: color 0.3s ease;
-      @include font-style(clamp_vw(20),0,70,$medium);
+      @include font-style(max_vw(20),0,70,$medium);
       @include flex(center);
       &::before {
         display: block;
         content: "";
         @include icn-mail;
-        width: clamp_vw(30);
-        height: clamp_vw(30);
-        margin-right: min_vw(12);
+        width: max_vw(30);
+        height: max_vw(30);
+        margin-right: max_vw(12);
       }
       @media (any-hover: hover) {
         &:hover {
@@ -25,7 +25,7 @@
       }
     }
     .copyright {
-      @include font-style(clamp_vw(12),0,50);
+      @include font-style(max_vw(12),0,50);
     }
   }
 }

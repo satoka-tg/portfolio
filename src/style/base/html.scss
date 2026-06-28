@@ -11,12 +11,4 @@ html {
 	html {
 		scroll-behavior: smooth;
 	}
-
-	.anchor {
-		scroll-margin-top: 12.0rem;
-
-		@include mq-max {
-			scroll-margin-top: vw(51, $sp);
-		}
-	}
 }

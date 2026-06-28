@@ -2,17 +2,17 @@
 
 #skills {
   dl {
-    padding-block: min_vw(77) min_vw(100);
-    margin-right: min_vw(70);
+    padding-block: max_vw(77) max_vw(100);
+    margin-right: max_vw(70);
     @include flex(0,between);
     dt {
       font-weight: $bold;
       letter-spacing: 0.05em;
-      margin-bottom: min_vw(48);
+      margin-bottom: max_vw(48);
     }
     dd {
       letter-spacing: 0.05em;
-      margin-top: min_vw(32);
+      margin-top: max_vw(32);
     }
   }
 }

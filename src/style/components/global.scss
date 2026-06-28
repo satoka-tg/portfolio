@@ -30,22 +30,22 @@
 
 section {
   display: grid;
-  grid-template-columns: min_vw(106) 1fr;
-  border-bottom: 1px solid $color-white;
+  grid-template-columns: vw(106) 1fr;
+  border-bottom: max_vw(1) solid $color-white;
 }
 
 .aside {
   grid-column: 1;
-  width: min_vw(106);
-  border-right: 1px solid $color-white;
+  width: vw(106);
+  border-right: max_vw(1) solid $color-white;
   @include flex(center,between);
   flex-direction: column;
-  padding-block: min_vw(50);
+  padding-block: max_vw(50);
 }
 
 .content {
   grid-column: 2;
-  padding-inline: min_vw(70) min_vw(106);
+  padding-inline: vw(70) vw(106);
 }
 
 h2 {
@@ -58,9 +58,9 @@ h2 {
   position: relative;
   a {
     color: $color-orange;
-    @include font-style(clamp_vw(12),0,5,semi-bold);
+    @include font-style(max_vw(12),0,5,semi-bold);
     writing-mode: vertical-rl;
-    padding: 0 min_vw(-4) min_vw(42) min_vw(12);
+    padding: 0 max_vw(-4) max_vw(42) max_vw(12);
   }
 
   &::before{
@@ -68,7 +68,7 @@ h2 {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 2px;
+    width: max_vw(2);
     height: 100%;
     background: $color-white;
     pointer-events: none;
@@ -78,10 +78,11 @@ h2 {
     content: "";
     position: absolute;
     bottom: 0;
-    left: -.2rem;
-    width: .6rem;
-    height: .6rem;
+    left: 0;
+    width: max_vw(6);
+    height: max_vw(6);
     border-radius: 50%;
+    transform: translateX(-30%);
     background: $color-orange;
     animation:
       circlemove 2.8s ease-in-out infinite,

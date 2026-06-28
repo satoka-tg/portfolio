@@ -1,17 +1,17 @@
 @use "../abstracts/_index" as *;
 
 #header {
-  border-top: 1px solid $color-white;
-  border-bottom: 1px solid $color-white;
+  border-top: max_vw(1) solid $color-white;
+  border-bottom: max_vw(1) solid $color-white;
   display: grid;
-  grid-template-columns: min_vw(106) 1fr;
-  height: min_vw(106);
+  grid-template-columns: vw(106) 1fr;
+  height: vw(106);
 
   .logo {
-    @include font-style(min_vw(24), 0, 10, bold);
+    @include font-style(max_vw(24), 0, 10, bold);
     grid-column: 1;
     height: 100%;
-    border-right: 1px solid $color-white;
+    border-right: max_vw(1) solid $color-white;
     @include flex(center, center);
   }
 
@@ -19,18 +19,18 @@
     @include font-style(0, 0, 10, 0);
     grid-column: 2;
     @include flex(center);
-    margin-left: min_vw(50);
+    margin-left: max_vw(50);
   }
 
   .btn-menu {
     position: fixed;
     right: 0;
     top: 0;
-    width: min_vw(106);
-    height: min_vw(106);
-    border-top: 1px solid $color-white;
-    border-left: 1px solid $color-white;
-    border-bottom: 1px solid $color-white;
+    width: vw(106);
+    height: vw(106);
+    border-top: max_vw(1) solid $color-white;
+    border-left: max_vw(1) solid $color-white;
+    border-bottom: max_vw(1) solid $color-white;
     cursor: pointer;
     z-index: 10;
     overflow: hidden;
@@ -38,13 +38,13 @@
 
     .dots {
       position: relative;
-      width: min_vw(34);
-      height: min_vw(34);
+      width: max_vw(34);
+      height: max_vw(34);
       @include flex(center, center);
       span {
         display: block;
-        width: min_vw(6);
-        height: min_vw(6);
+        width: max_vw(6);
+        height: max_vw(6);
         background-color: $color-orange;
         transition: width 0.3s ease, transform 0.3s ease, opacity 0.3s ease, top 0.3s ease, bottom 0.3s ease;
         &:first-child {
@@ -65,8 +65,8 @@
     &.is-active {
       .dots {
         span {
-          width: min_vw(146);
-          height: 1px;
+          width: max_vw(146);
+          height: max_vw(1);
           background-color: $color-white;
 
           &:nth-child(2) {

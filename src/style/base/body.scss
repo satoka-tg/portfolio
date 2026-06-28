@@ -9,7 +9,7 @@ body {
 	color: $color-white;
 	background: $color-black;
 	@include font-gothic;
-	@include font-style(clamp_vw(16), 100%);
+	@include font-style(max_vw(16), 100%);
 	-webkit-text-size-adjust: 100%;
 	overflow-wrap: anywhere;
 	word-break: normal;
