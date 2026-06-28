@@ -65,7 +65,7 @@
 
   li {
     + li {
-      margin-top: clamp_vw(50);
+      margin-top: min_vw(50);
     }
     a {
       display: block;

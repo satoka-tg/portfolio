@@ -44,11 +44,12 @@
 
   &-inner {
     position: relative;
-    padding: min_vw(90) min_vw(70);
+    padding: min_vw(90) min_vw(62) min_vw(90) min_vw(70);
     height: 80svh;
     background: $color-orange;
     @include flex(0,between);
     gap: min_vw(90);
+    overflow: hidden;
   }
 
   &-close {
@@ -93,9 +94,101 @@
 
   &-cont {
     flex: 1;
+    @include flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  &-index {
+    position: relative;
+    text-decoration: underline $color-white solid .3rem;
+    text-underline-offset: .4rem;
+    padding-bottom: .7rem;
+    @include font-style(0,0,5,$bold);
+  }
+
+  &-title {
+    margin-top: min_vw(10);
+    a {
+      position: relative;
+      text-decoration: underline;
+      @include font-style(clamp_vw(26),100%,5,$bold);
+      @include flex(center,$display: inline-flex);
+      gap: min_vw(10);
+      transition: color 0.3s ease;
+      @media (any-hover: hover) {
+        &:hover {
+          color: $color-white;
+        }
+      }
+      &::after {
+        display: block;
+        content: "";
+        @include icn-blank;
+        width: clamp_vw(15);
+        height: clamp_vw(12);
+      }
+    }
+
   }
 
   &-categories {
-    
+    margin-top: min_vw(20);
+    @include flex(0,0,wrap);
+    gap: min_vw(12);
+    li {
+      padding: min_vw(5);
+      background-color: $color-white;
+      @include font-style(clamp_vw(14),100%);
+    }
+  }
+
+  &-period {
+    margin-top: min_vw(10);
+    @include font-style(clamp_vw(14),100%);
+  }
+
+  .modal-detail {
+    margin-top: min_vw(36);
+    overflow-y: auto;
+    flex: 1;
+    padding-right: min_vw(28);
+    // Chrome・Safari・Edge
+    &::-webkit-scrollbar {
+      width: .3rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $color-white;
+      border-radius: 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $color-black;
+      border-radius: 0;
+    }
+
+    // Firefoxのみ
+    @-moz-document url-prefix() {
+      scrollbar-width: thin;
+      scrollbar-color: $color-black $color-white;
+    }
+  }
+
+  &-row {
+    border-top: 1px solid $color-black;
+    padding-block: min_vw(24);
+    @include flex;
+    &:last-child {
+      border-bottom: 1px solid $color-black;
+    }
+    dt {
+      width: calc(4em + min_vw(25));
+      @include font-style(clamp_vw(14),150%,0,$bold);
+    }
+    dd {
+      flex: 1;
+      @include font-style(clamp_vw(14),150%);
+    }
   }
 }

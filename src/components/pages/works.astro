@@ -18,7 +18,7 @@ type Work = {
 const worksData: Work[] = [
   {
     title: "CITIZEN PROMASTER",
-    url: "https://...",
+    url: "https://citizen.jp/promaster/special/index.html",
     image: "pages/demo-works.jpg",
     categories: ["ブランドサイト", "リニューアル"],
     period: "2019年〜2026年",
@@ -137,49 +137,43 @@ const worksData: Work[] = [
   worksData.map((work, index) => (
     <dialog id={`modal-${index}`} class="modal">
       <div class="modal-inner">
-        <div class="modal-image">
-          <Img srcPaths={[work.image]} alt={work.title} classNames="image" />
-        </div>
+        <Img
+          srcPaths={[work.image]}
+          alt={work.title}
+          classNames="modal-image"
+        />
         <div class="modal-cont">
           <button class="modal-close" aria-label="閉じる">
             <span />
             <span />
           </button>
-          <div class="modal-header">
-            <p class="modal-index">{String(index + 1).padStart(2, "0")}</p>
-            <h3>
-              <a href={work.url} target="_blank" rel="noopener noreferrer">
-                {work.title}
-              </a>
-            </h3>
-            <ul class="modal-categories">
-              {work.categories.map((c) => (
-                <li>{c}</li>
-              ))}
-            </ul>
-            <p class="modal-period">{work.period}</p>
-          </div>
-          <dl class="modal-body">
+          <p class="modal-index">{String(index + 1).padStart(2, "0")}</p>
+          <h3 class="modal-title">
+            <a href={work.url} target="_blank" rel="noopener noreferrer">
+              {work.title}
+            </a>
+          </h3>
+          <ul class="modal-categories">
+            {work.categories.map((c) => (
+              <li>{c}</li>
+            ))}
+          </ul>
+          <p class="modal-period">期間：{work.period}</p>
+          <dl class="modal-detail">
             <div class="modal-row">
               <dt>概要</dt>
               <dd>{work.overview}</dd>
             </div>
             <div class="modal-row">
               <dt>担当</dt>
-              <dd>
-                <ul>
-                  {work.role.map((r) => (
-                    <li>{r}</li>
-                  ))}
-                </ul>
-              </dd>
+              <dd>{work.role.join(", ")}</dd>
             </div>
             <div class="modal-row">
               <dt>課題</dt>
               <dd>{work.challenge}</dd>
             </div>
             <div class="modal-row">
-              <dt>アプローチ</dt>
+              <dt>取り組み</dt>
               <dd>{work.approach}</dd>
             </div>
             <div class="modal-row">
@@ -188,13 +182,7 @@ const worksData: Work[] = [
             </div>
             <div class="modal-row">
               <dt>使用技術</dt>
-              <dd>
-                <ul class="modal-technologies">
-                  {work.technologies.map((t) => (
-                    <li>{t}</li>
-                  ))}
-                </ul>
-              </dd>
+              <dd>{work.technologies.join(", ")}</dd>
             </div>
           </dl>
         </div>
