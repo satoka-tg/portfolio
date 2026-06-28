@@ -10,8 +10,9 @@
       <canvas id="c" width="420" height="420" style="max-width:100%;"></canvas>
     </div>
     <script>
-      const canvas = document.getElementById("c");
-      const ctx = canvas.getContext("2d");
+      // #c は同一コンポーネント内に必ず存在するため assertion を使用
+      const canvas = document.getElementById("c") as HTMLCanvasElement;
+      const ctx = canvas.getContext("2d")!;
       const W = 420,
         H = 420,
         CX = W / 2,
