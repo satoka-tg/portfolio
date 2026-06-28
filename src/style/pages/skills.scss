@@ -14,5 +14,18 @@
       letter-spacing: 0.05em;
       margin-top: max_vw(32);
     }
+
+    @include mq-max {
+      flex-direction: column;
+      padding-block: vw(37, $sp) vw(46, $sp);
+      margin-right: 0;
+      gap: vw(54, $sp);
+      dt {
+        margin-bottom: vw(32, $sp);
+      }
+      dd {
+        margin-top: vw(22, $sp);
+      }
+    }
   }
 }

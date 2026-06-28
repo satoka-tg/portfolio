@@ -42,6 +42,10 @@
     }
   }
 
+  @include mq-max {
+    margin: auto vw(25, $sp);
+  }
+
   &-inner {
     position: relative;
     padding: max_vw(90) max_vw(62) max_vw(90) max_vw(70);
@@ -50,6 +54,12 @@
     @include flex(0,between);
     gap: vw(90);
     overflow: hidden;
+
+    @include mq-max {
+      padding: vw(40, $sp) vw(20, $sp) vw(30, $sp) vw(26, $sp);
+      flex-direction: column;
+      gap: vw(16, $sp);
+    }
   }
 
   &-close {
@@ -82,6 +92,14 @@
         transform: translate(-50%, 50%) rotate(-45deg);
       }
     }
+
+    @include mq-max {
+      width: vw(40, $sp);
+      height: vw(40, $sp);
+      span {
+        width: vw(70, $sp);
+      }
+    }
   }
 
   &-image {
@@ -89,6 +107,10 @@
     img {
       height: 100%;
       object-fit: cover;
+    }
+    @include mq-max {
+      width: 100%;
+      height: vw(180, $sp);
     }
   }
 
@@ -105,6 +127,13 @@
     text-underline-offset: max_vw(4);
     padding-bottom: max_vw(7);
     @include font-style(0,0,5,$bold);
+
+    @include mq-max {
+      text-decoration-thickness: vw(2, $sp);
+      text-underline-offset: vw(3, $sp);
+      padding-bottom: vw(5, $sp);
+      font-size: vw(12, $sp);
+    }
   }
 
   &-title {
@@ -130,6 +159,17 @@
       }
     }
 
+    @include mq-max {
+      margin-top: vw(2, $sp);
+      a {
+        font-size: vw(16, $sp);
+        gap: vw(5, $sp);
+        &::after {
+          width: vw(11, $sp);
+          height: vw(9, $sp);
+        }
+      }
+    }
   }
 
   &-categories {
@@ -141,11 +181,25 @@
       background-color: $color-white;
       @include font-style(max_vw(14),100%);
     }
+
+    @include mq-max {
+      margin-top: vw(12, $sp);
+      gap: vw(5, $sp);
+      li {
+        padding: vw(4, $sp);
+        font-size: vw(10, $sp);
+      }
+    }
   }
 
   &-period {
     margin-top: max_vw(10);
     @include font-style(max_vw(14),100%);
+
+    @include mq-max {
+      margin-top: vw(5, $sp);
+      font-size: vw(11, $sp);
+    }
   }
 
   .modal-detail {
@@ -173,22 +227,44 @@
       scrollbar-width: thin;
       scrollbar-color: $color-black $color-white;
     }
+
+    @include mq-max {
+      margin-top: vw(20, $sp);
+      padding-right: vw(12, $sp);
+      &::-webkit-scrollbar {
+        width: vw(2, $sp);
+      }
+    }
   }
 
   &-row {
     border-top: max_vw(1) solid $color-black;
     padding-block: max_vw(24);
     @include flex;
+
+    @include mq-max {
+      padding-block: vw(15, $sp);
+    }
+
     &:last-child {
       border-bottom: max_vw(1) solid $color-black;
     }
     dt {
       width: calc(4em + max_vw(25));
       @include font-style(max_vw(14),150%,0,$bold);
+
+      @include mq-max {
+        width: calc(4em + vw(15, $sp));
+        @include font-style(vw(12, $sp),150%);
+      }
     }
     dd {
       flex: 1;
-      @include font-style(max_vw(14),150%);
+      @include font-style(max_vw(14),170%);
+
+      @include mq-max {
+        @include font-style(vw(12, $sp),170%);
+      }
     }
   }
 }

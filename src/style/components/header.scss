@@ -96,4 +96,37 @@
     }
   }
 
+  @include mq-max {
+    grid-template-columns: vw(60, $sp) 1fr;
+    height: vw(80, $sp);
+
+    .logo {
+      font-size: vw(24, $sp);
+    }
+
+    .text {
+      margin-left: vw(18, $sp);
+    }
+
+    .btn-menu {
+      width: vw(80, $sp);
+      height: vw(80, $sp);
+      .dots {
+        width: vw(34, $sp);
+        height: vw(34, $sp);
+        span {
+          width: vw(6, $sp);
+          height: vw(6, $sp);
+        }
+      }
+      &.is-active {
+        .dots {
+          span {
+            width: vw(110, $sp);
+          }
+        }
+      }
+    }
+  }
+
 }

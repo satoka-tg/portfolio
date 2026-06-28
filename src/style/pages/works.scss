@@ -131,7 +131,10 @@
         }
       }
     }
-    @include mq-max(lg) {
+
+    @include mq-max {
+      margin-block: vw(35, $sp);
+      gap: vw(12, $sp);
       grid-template-columns: 1fr;
       grid-template-areas:
         "item1"
@@ -139,6 +142,20 @@
         "item3"
         "item4"
         "item5";
+
+      li {
+        height: vw(160, $sp);
+        .item {
+          padding: 0 vw(12, $sp) vw(13, $sp) vw(17, $sp);
+          gap: vw(7, $sp);
+          &::after {
+            font-size: vw(50, $sp);
+          }
+        }
+        h3 {
+          font-size: vw(14, $sp);
+        }
+      }
     }
   }
 }

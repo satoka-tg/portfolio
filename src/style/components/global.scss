@@ -15,23 +15,13 @@
 	}
 }
 
-._cl-or {
-	color: $color-orange;
-}
-
-._indent {
-	text-indent: -1em;
-	padding-left: 1em;
-}
-
-._inner {
-	@include inner();
-}
-
 section {
   display: grid;
   grid-template-columns: vw(106) 1fr;
   border-bottom: max_vw(1) solid $color-white;
+  @include mq-max {
+    grid-template-columns: vw(60, $sp) 1fr;
+  }
 }
 
 .aside {
@@ -41,11 +31,18 @@ section {
   @include flex(center,between);
   flex-direction: column;
   padding-block: max_vw(50);
+  @include mq-max {
+    width: vw(60, $sp);
+    padding-block: vw(35, $sp) vw(24, $sp);
+  }
 }
 
 .content {
   grid-column: 2;
   padding-inline: vw(70) vw(106);
+  @include mq-max {
+    padding-inline: vw(22, $sp) vw(30, $sp);
+  }
 }
 
 h2 {
@@ -60,7 +57,7 @@ h2 {
     color: $color-orange;
     @include font-style(max_vw(12),0,5,semi-bold);
     writing-mode: vertical-rl;
-    padding: 0 max_vw(-4) max_vw(42) max_vw(12);
+    padding: 0 0 max_vw(42) max_vw(12);
   }
 
   &::before{
@@ -88,6 +85,19 @@ h2 {
       circlemove 2.8s ease-in-out infinite,
       cirlemovehide 2.8s ease-out infinite;
     pointer-events: none;
+  }
+  @include mq-max {
+    a {
+      font-size: vw(12, $sp);
+      padding: 0 0 vw(37, $sp) vw(12, $sp);
+    }
+    &::before{
+      width: vw(2, $sp);
+    }
+    &::after {
+      width: vw(6, $sp);
+      height: vw(6, $sp);
+    }
   }
 }
 

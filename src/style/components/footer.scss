@@ -28,4 +28,26 @@
       @include font-style(max_vw(12),0,50);
     }
   }
+
+  @include mq-max {
+    grid-template-columns: vw(60, $sp) 1fr;
+    .content {
+      flex-direction: column;
+      align-items: unset;
+      justify-content: center;
+      gap: vw(40, $sp);
+      padding-block: vw(45, $sp) vw(50, $sp);
+      .mail {
+        font-size: vw(16, $sp);
+        &::before {
+          width: vw(20, $sp);
+          height: vw(20, $sp);
+          margin-right: vw(10, $sp);
+        }
+      }
+      .copyright {
+        font-size: vw(12, $sp);
+      }
+    }
+  }
 }

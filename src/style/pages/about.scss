@@ -31,4 +31,36 @@
       @include font-style(max_vw_vw(14),0,0,medium);
     }
   }
+
+  @include mq-max {
+    min-height: calc(100svh - vw(80, $sp));
+    .content {
+      @include flex;
+      flex-direction: column;
+    }
+    .image {
+      width: 100%;
+      height: vw(263, $sp);
+      margin-top: 4svh;
+    }
+    .text-warp {
+      flex-direction: column;
+      align-items: unset;
+      justify-content: space-between;
+      padding-bottom: vw(36, $sp);
+      flex: 1;
+    }
+    .lead {
+      font-size: vw(14, $sp);
+    }
+    dl {
+      gap: 1em vw(20, $sp);
+      dt {
+        font-size: vw(14, $sp);
+      }
+      dd {
+        font-size: vw(12, $sp);
+      }
+    }
+  }
 }

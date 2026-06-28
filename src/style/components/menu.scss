@@ -79,5 +79,13 @@
         }
       }
     }
+    @include mq-max {
+      + li {
+        margin-top: vw(40, $sp);
+      }
+      a {
+        font-size: vw(20, $sp);
+      }
+    }
   }
 }
