@@ -10,4 +10,6 @@ export default defineConfig({
 			},
 		},
 	},
+  site: 'https://satoka-tg.github.io',
+  base: '/portfolio',
 });
