@@ -98,10 +98,10 @@
 
   @include mq-max {
     grid-template-columns: vw(60, $sp) 1fr;
-    height: vw(80, $sp);
+    height: vw(60, $sp);
 
     .logo {
-      font-size: vw(24, $sp);
+      font-size: vw(20, $sp);
     }
 
     .text {
@@ -109,14 +109,14 @@
     }
 
     .btn-menu {
-      width: vw(80, $sp);
-      height: vw(80, $sp);
+      width: vw(60, $sp);
+      height: vw(60, $sp);
       .dots {
-        width: vw(34, $sp);
-        height: vw(34, $sp);
+        width: vw(24, $sp);
+        height: vw(24, $sp);
         span {
-          width: vw(6, $sp);
-          height: vw(6, $sp);
+          width: vw(4, $sp);
+          height: vw(4, $sp);
         }
       }
       &.is-active {

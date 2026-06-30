@@ -46,9 +46,14 @@ section {
 }
 
 h2 {
+  position: sticky;
+  top: max_vw(50);
   color: $color-orange;
   @include font-style(0,0,50,bold);
   writing-mode: vertical-rl;
+  @include mq-max {
+    top: vw(35, $sp);
+  }
 }
 
 .scroll {

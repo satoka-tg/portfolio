@@ -2,6 +2,9 @@
 
 #about {
   position: relative;
+  h2 {
+    padding-bottom: max_vw(150);
+  }
   .image {
     width: vw(659);
     height: vw(659);
@@ -33,7 +36,10 @@
   }
 
   @include mq-max {
-    min-height: calc(100svh - vw(80, $sp));
+    min-height: calc(100svh - vw(60, $sp));
+    h2 {
+      padding-bottom: vw(130, $sp);
+    }
     .content {
       @include flex;
       flex-direction: column;

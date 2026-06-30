@@ -17,7 +17,24 @@ type Work = {
 
 const worksData: Work[] = [
   {
-    title: "CITIZEN PROMASTER",
+    title: "菊乃井 室礼",
+    url: "https://kikunoi.jp/shitsurae/",
+    image: "pages/demo-works.jpg",
+    categories: ["スペシャルサイト", "新規作成"],
+    period: "2025年",
+    overview:
+      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
+    role: ["コーディング"],
+    challenge:
+      "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
+    approach:
+      "対応ブラウザに合わせ可能な限り最新の記述で実装しつつ、更新のしやすさも考慮した設計を心がけました。外部エンジニアへの依頼時はGoogleスライドで詳細を連携し、認識のずれを防ぎました。",
+    result:
+      "アニメーションやレスポンシブ実装について先方ディレクター・デザイナーから完成度の高さを評価され、担当以降も継続的に依頼をいただいています。",
+    technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
+  },
+  {
+    title: "PROMASTER ブランドサイト",
     url: "https://citizen.jp/promaster/special/index.html",
     image: "pages/demo-works.jpg",
     categories: ["ブランドサイト", "リニューアル"],
@@ -34,8 +51,8 @@ const worksData: Work[] = [
     technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
   },
   {
-    title: "CITIZEN PROMASTER",
-    url: "https://...",
+    title: "ジャフコ グループ株式会社",
+    url: "https://www.jafco.co.jp/",
     image: "pages/demo-works.jpg",
     categories: ["ブランドサイト", "リニューアル"],
     period: "2019年〜2026年",
@@ -51,10 +68,10 @@ const worksData: Work[] = [
     technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
   },
   {
-    title: "CITIZEN PROMASTER",
-    url: "https://...",
+    title: "秋桜会クリニック",
+    url: "https://kosumosukai-clinic.jp/",
     image: "pages/demo-works.jpg",
-    categories: ["ブランドサイト", "リニューアル"],
+    categories: ["病院サイト", "リニューアル", "Wordpress"],
     period: "2019年〜2026年",
     overview:
       "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
@@ -68,27 +85,10 @@ const worksData: Work[] = [
     technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
   },
   {
-    title: "CITIZEN PROMASTER",
-    url: "https://...",
+    title: "洞川温泉醸造所",
+    url: "https://yama-beer.com/",
     image: "pages/demo-works.jpg",
-    categories: ["ブランドサイト", "リニューアル"],
-    period: "2019年〜2026年",
-    overview:
-      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
-    role: ["コーディング", "Webディレクション"],
-    challenge:
-      "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
-    approach:
-      "対応ブラウザに合わせ可能な限り最新の記述で実装しつつ、更新のしやすさも考慮した設計を心がけました。外部エンジニアへの依頼時はGoogleスライドで詳細を連携し、認識のずれを防ぎました。",
-    result:
-      "アニメーションやレスポンシブ実装について先方ディレクター・デザイナーから完成度の高さを評価され、担当以降も継続的に依頼をいただいています。",
-    technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
-  },
-  {
-    title: "CITIZEN PROMASTER",
-    url: "https://...",
-    image: "pages/demo-works.jpg",
-    categories: ["ブランドサイト", "リニューアル"],
+    categories: ["ブランドサイト", "リニューアル", "カラーミー"],
     period: "2019年〜2026年",
     overview:
       "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
@@ -121,7 +121,10 @@ const worksData: Work[] = [
             >
               <h3>{work.title}</h3>
               <Img
-                srcPaths={[work.image]}
+                srcPaths={[
+                  `pages/works-${index + 1}_pc.jpg`,
+                  `pages/works-${index + 1}_sp.jpg`,
+                ]}
                 alt={work.title}
                 classNames="image"
               />
@@ -138,7 +141,10 @@ const worksData: Work[] = [
     <dialog id={`modal-${index}`} class="modal">
       <div class="modal-inner">
         <Img
-          srcPaths={[work.image]}
+          srcPaths={[
+            `pages/works-${index + 1}_pc.jpg`,
+            `pages/works-${index + 1}_sp.jpg`,
+          ]}
           alt={work.title}
           classNames="modal-image"
         />
