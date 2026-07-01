@@ -4,7 +4,6 @@ import Img from "~/components/abstracts/Img.astro";
 type Work = {
   title: string;
   url: string;
-  image: string;
   categories: string[];
   period: string;
   overview: string;
@@ -19,46 +18,66 @@ const worksData: Work[] = [
   {
     title: "菊乃井 室礼",
     url: "https://kikunoi.jp/shitsurae/",
-    image: "pages/demo-works.jpg",
-    categories: ["スペシャルサイト", "新規作成"],
+    categories: ["スペシャルサイト", "新規制作"],
     period: "2025年",
     overview:
-      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
-    role: ["コーディング"],
+      "料亭のスペシャルサイトの新規構築案件。フロントエンド実装全般を担当し、慣性スクロールやスクロール連動アニメーションを取り入れることで、高級感や特別感のある演出を実現しました。",
+    role: ["フロントエンド実装"],
     challenge:
-      "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
+      "料亭の本店を紹介するスペシャルサイトとして、ブランドイメージにふさわしい高級感や特別感をWeb上で表現すること。",
     approach:
-      "対応ブラウザに合わせ可能な限り最新の記述で実装しつつ、更新のしやすさも考慮した設計を心がけました。外部エンジニアへの依頼時はGoogleスライドで詳細を連携し、認識のずれを防ぎました。",
+      "シンプルなデザインを活かしつつ、慣性スクロールやスクロール連動アニメーション、横スクロール演出を実装し、ゆったりとした没入感のある体験を目指しました。また、レスポンシブ環境でも演出やレイアウトが崩れないよう、表示位置やアニメーションの挙動を調整しました。",
     result:
-      "アニメーションやレスポンシブ実装について先方ディレクター・デザイナーから完成度の高さを評価され、担当以降も継続的に依頼をいただいています。",
-    technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
+      "外部ディレクション案件として実装を担当し、品質面について高い評価をいただきました。",
+    technologies: [
+      "HTML",
+      "Sass",
+      "Astro",
+      "TypeScript",
+      "Lenis",
+      "Git",
+      "GitHub",
+      "AI(ChatGPT)",
+      "XD",
+    ],
   },
   {
-    title: "PROMASTER ブランドサイト",
+    title: "PROMASTER ブランドサイト・その他関連サイト",
     url: "https://citizen.jp/promaster/special/index.html",
-    image: "pages/demo-works.jpg",
-    categories: ["ブランドサイト", "リニューアル"],
+    categories: [
+      "ブランドサイト",
+      "リニューアル",
+      "スペシャルサイト",
+      "新規制作",
+    ],
     period: "2019年〜2026年",
     overview:
-      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
-    role: ["コーディング", "Webディレクション"],
+      "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、フロントエンド実装やWebディレクションも行いました。",
+    role: ["フロントエンド実装", "Webディレクション"],
     challenge:
       "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
     approach:
       "対応ブラウザに合わせ可能な限り最新の記述で実装しつつ、更新のしやすさも考慮した設計を心がけました。外部エンジニアへの依頼時はGoogleスライドで詳細を連携し、認識のずれを防ぎました。",
     result:
       "アニメーションやレスポンシブ実装について先方ディレクター・デザイナーから完成度の高さを評価され、担当以降も継続的に依頼をいただいています。",
-    technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
+    technologies: [
+      "HTML",
+      "Sass",
+      "EJS",
+      "Astro",
+      "JavaScript",
+      "jQuery",
+      "TypeScript",
+    ],
   },
   {
     title: "ジャフコ グループ株式会社",
     url: "https://www.jafco.co.jp/",
-    image: "pages/demo-works.jpg",
     categories: ["ブランドサイト", "リニューアル"],
     period: "2019年〜2026年",
     overview:
       "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
-    role: ["コーディング", "Webディレクション"],
+    role: ["フロントエンド実装", "Webディレクション"],
     challenge:
       "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
     approach:
@@ -70,12 +89,11 @@ const worksData: Work[] = [
   {
     title: "秋桜会クリニック",
     url: "https://kosumosukai-clinic.jp/",
-    image: "pages/demo-works.jpg",
     categories: ["病院サイト", "リニューアル", "Wordpress"],
     period: "2019年〜2026年",
     overview:
       "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
-    role: ["コーディング", "Webディレクション"],
+    role: ["フロントエンド実装", "Webディレクション"],
     challenge:
       "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
     approach:
@@ -87,12 +105,11 @@ const worksData: Work[] = [
   {
     title: "洞川温泉醸造所",
     url: "https://yama-beer.com/",
-    image: "pages/demo-works.jpg",
     categories: ["ブランドサイト", "リニューアル", "カラーミー"],
     period: "2019年〜2026年",
     overview:
       "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
-    role: ["コーディング", "Webディレクション"],
+    role: ["フロントエンド実装", "Webディレクション"],
     challenge:
       "多言語展開でも管理しやすい環境の構築と、商品情報をより分かりやすく伝えるデザイン・実装の両立。",
     approach:
