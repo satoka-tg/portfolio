@@ -2,9 +2,13 @@
 
 .modal {
   border: none;
-  margin: auto vw(106) auto vw(176);
-  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100svh;
   opacity: 0;
+  background-color: $color-orange;
+  padding-left: max_vw(106);
   transition:
     opacity 0.3s ease,
     display 0.4s ease allow-discrete,
@@ -24,7 +28,7 @@
   }
 
   &::backdrop {
-    background: rgba(#000, 0.5);
+    background: $color-orange;
     opacity: 0;
     transition:
       opacity 0.4s ease,
@@ -46,14 +50,37 @@
     margin: auto vw(25, $sp);
   }
 
+  &-side {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    .num {
+      height: max_vw(106);
+      border-bottom: max_vw(1) solid $color-white;
+      color: $color-white;
+      white-space: nowrap;
+      @include font-style(vw(48),100%,-50,extra-light,en);
+      @include flex(center, center);
+    }
+    .cat {
+      margin-top: max_vw(45);
+      width: 100%;
+      writing-mode: vertical-rl;
+      @include font-style(max_vw(26),100%,100,$bold);
+      @include flex(center);
+    }
+    @include mq-min {
+      width: vw(106);
+      border-right: max_vw(1) solid $color-white;
+    }
+  }
+
   &-inner {
     position: relative;
-    padding: max_vw(90) max_vw(62) max_vw(90) max_vw(70);
-    height: 80svh;
-    background: $color-orange;
+    padding: max_vw(90) max_vw(106) max_vw(90) max_vw(70);
     @include flex(0,between);
     gap: vw(90);
-    overflow: hidden;
 
     @include mq-max {
       padding: vw(40, $sp) vw(20, $sp) vw(30, $sp) vw(26, $sp);
@@ -62,12 +89,220 @@
     }
   }
 
+  &-image {
+    width: vw(465);
+    a {
+      display: block;
+      position: sticky;
+      top: max_vw(90);
+      height: calc(100svh - calc(max_vw(160)));
+      @media (any-hover: hover) {
+        &:hover {
+          img {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+    picture {
+      height: 100%;
+      overflow: hidden;
+    }
+    img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    @include mq-max {
+      width: 100%;
+      height: vw(180, $sp);
+    }
+  }
+
+  &-cont {
+    flex: 1;
+  }
+
+  &-index {
+    position: relative;
+    text-decoration: underline $color-white solid max_vw(3);
+    text-underline-offset: max_vw(4);
+    padding-bottom: max_vw(7);
+    @include font-style(0,0,5,$bold);
+
+    @include mq-max {
+      text-decoration-thickness: vw(2, $sp);
+      text-underline-offset: vw(3, $sp);
+      padding-bottom: vw(5, $sp);
+      font-size: vw(12, $sp);
+    }
+  }
+
+  &-title {
+    margin-top: max_vw(10);
+    @include font-style(max_vw(26),100%,5,$bold);
+
+    @include mq-max {
+      margin-top: vw(2, $sp);
+      font-size: vw(16, $sp);
+    }
+  }
+
+  &-link {
+    position: relative;
+    text-decoration: underline;
+    @include flex(center,$display: inline-flex);
+    gap: max_vw(10);
+    transition: color 0.3s ease;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $color-white;
+      }
+    }
+    &::after {
+      display: block;
+      content: "";
+      @include icn-blank;
+      width: max_vw(15);
+      height: max_vw(12);
+    }
+    @include mq-max {
+      gap: vw(5, $sp);
+      &::after {
+        width: vw(11, $sp);
+        height: vw(9, $sp);
+      }
+    }
+  }
+
+  &-tags {
+    margin-top: max_vw(20);
+    @include flex(0,0,wrap);
+    gap: max_vw(12);
+    li {
+      padding: max_vw(5);
+      background-color: $color-white;
+      @include font-style(max_vw(14),100%);
+    }
+
+    @include mq-max {
+      margin-top: vw(12, $sp);
+      gap: vw(5, $sp);
+      li {
+        padding: vw(4, $sp);
+        font-size: vw(10, $sp);
+      }
+    }
+  }
+
+  &-period {
+    margin-top: max_vw(10);
+    @include font-style(max_vw(14),100%);
+
+    @include mq-max {
+      margin-top: vw(5, $sp);
+      font-size: vw(11, $sp);
+    }
+  }
+
+  .modal-detail {
+    margin-top: max_vw(36);
+
+    @include mq-max {
+      margin-top: vw(20, $sp);
+    }
+  }
+
+  &-row {
+    border-top: max_vw(1) solid $color-black;
+    padding-block: max_vw(24);
+    @include flex;
+
+    @include mq-max {
+      padding-block: vw(15, $sp);
+    }
+
+    &:last-child {
+      border-bottom: max_vw(1) solid $color-black;
+    }
+    dt {
+      width: calc(4em + max_vw(25));
+      @include font-style(max_vw(14),150%,0,$bold);
+
+      @include mq-max {
+        width: calc(4em + vw(15, $sp));
+        @include font-style(vw(12, $sp),150%);
+      }
+    }
+    dd {
+      flex: 1;
+      @include font-style(max_vw(14),170%);
+
+      @include mq-max {
+        @include font-style(vw(12, $sp),170%);
+      }
+    }
+  }
+
+  &-prev,
+  &-next {
+    position: fixed;
+    top: 50%;
+    width: max_vw(70);
+    height: max_vw(70);
+    background-color: $color-white;
+    border: max_vw(1) solid $color-white;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    &::before {
+      position: absolute;
+      content: "";
+      top: calc(50% + max_vw(3));
+      left: 35%;
+      width: max_vw(26);
+      height: max_vw(26);
+      border-left: max_vw(2) solid $color-orange;
+      border-bottom: max_vw(2) solid $color-orange;
+      transform: rotate(45deg) translate(-25%, -50%);
+      transition: border-color 0.3s ease;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $color-orange;
+        &::before {
+          border-color: $color-white;
+        }
+      }
+    }
+  }
+  &-prev {
+    left: max_vw(106);
+  }
+  &-next {
+    right: max_vw(16);
+    scale: -1 1;
+  }
+  &-pager {
+    position: fixed;
+    left: 50%;
+    bottom: 3svh;
+    background-color: $color-black;
+    padding: max_vw(6) max_vw(10);
+    @include flex(center);
+    gap: max_vw(5);
+    color: $color-orange;
+    span {
+      @include font-style(max_vw(14), 100%);
+    }
+  }
+
   &-close {
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     width: vw(106);
     height: vw(106);
+    background-color: $color-orange;
     border-top: max_vw(1) solid $color-white;
     border-left: max_vw(1) solid $color-white;
     border-bottom: max_vw(1) solid $color-white;
@@ -102,169 +337,4 @@
     }
   }
 
-  &-image {
-    width: vw(465);
-    img {
-      height: 100%;
-      object-fit: cover;
-    }
-    @include mq-max {
-      width: 100%;
-      height: vw(180, $sp);
-    }
-  }
-
-  &-cont {
-    flex: 1;
-    @include flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  &-index {
-    position: relative;
-    text-decoration: underline $color-white solid max_vw(3);
-    text-underline-offset: max_vw(4);
-    padding-bottom: max_vw(7);
-    @include font-style(0,0,5,$bold);
-
-    @include mq-max {
-      text-decoration-thickness: vw(2, $sp);
-      text-underline-offset: vw(3, $sp);
-      padding-bottom: vw(5, $sp);
-      font-size: vw(12, $sp);
-    }
-  }
-
-  &-title {
-    margin-top: max_vw(10);
-    a {
-      position: relative;
-      text-decoration: underline;
-      @include font-style(max_vw(26),100%,5,$bold);
-      @include flex(center,$display: inline-flex);
-      gap: max_vw(10);
-      transition: color 0.3s ease;
-      @media (any-hover: hover) {
-        &:hover {
-          color: $color-white;
-        }
-      }
-      &::after {
-        display: block;
-        content: "";
-        @include icn-blank;
-        width: max_vw(15);
-        height: max_vw(12);
-      }
-    }
-
-    @include mq-max {
-      margin-top: vw(2, $sp);
-      a {
-        font-size: vw(16, $sp);
-        gap: vw(5, $sp);
-        &::after {
-          width: vw(11, $sp);
-          height: vw(9, $sp);
-        }
-      }
-    }
-  }
-
-  &-categories {
-    margin-top: max_vw(20);
-    @include flex(0,0,wrap);
-    gap: max_vw(12);
-    li {
-      padding: max_vw(5);
-      background-color: $color-white;
-      @include font-style(max_vw(14),100%);
-    }
-
-    @include mq-max {
-      margin-top: vw(12, $sp);
-      gap: vw(5, $sp);
-      li {
-        padding: vw(4, $sp);
-        font-size: vw(10, $sp);
-      }
-    }
-  }
-
-  &-period {
-    margin-top: max_vw(10);
-    @include font-style(max_vw(14),100%);
-
-    @include mq-max {
-      margin-top: vw(5, $sp);
-      font-size: vw(11, $sp);
-    }
-  }
-
-  .modal-detail {
-    margin-top: max_vw(36);
-    overflow-y: auto;
-    flex: 1;
-    padding-right: max_vw(28);
-    // Chrome・Safari・Edge
-    &::-webkit-scrollbar {
-      width: max_vw(3);
-    }
-
-    &::-webkit-scrollbar-track {
-      background: $color-white;
-      border-radius: 0;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: $color-black;
-      border-radius: 0;
-    }
-
-    // Firefoxのみ
-    @-moz-document url-prefix() {
-      scrollbar-width: thin;
-      scrollbar-color: $color-black $color-white;
-    }
-
-    @include mq-max {
-      margin-top: vw(20, $sp);
-      padding-right: vw(12, $sp);
-      &::-webkit-scrollbar {
-        width: vw(2, $sp);
-      }
-    }
-  }
-
-  &-row {
-    border-top: max_vw(1) solid $color-black;
-    padding-block: max_vw(24);
-    @include flex;
-
-    @include mq-max {
-      padding-block: vw(15, $sp);
-    }
-
-    &:last-child {
-      border-bottom: max_vw(1) solid $color-black;
-    }
-    dt {
-      width: calc(4em + max_vw(25));
-      @include font-style(max_vw(14),150%,0,$bold);
-
-      @include mq-max {
-        width: calc(4em + vw(15, $sp));
-        @include font-style(vw(12, $sp),150%);
-      }
-    }
-    dd {
-      flex: 1;
-      @include font-style(max_vw(14),170%);
-
-      @include mq-max {
-        @include font-style(vw(12, $sp),170%);
-      }
-    }
-  }
 }

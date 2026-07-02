@@ -1,10 +1,16 @@
 ---
 import Img from "~/components/abstracts/Img.astro";
 
+type WorksGroup = {
+  category: string;
+  items: Work[];
+};
+
 type Work = {
+  categorie: string;
   title: string;
   url: string;
-  categories: string[];
+  tags: string[];
   period: string;
   overview: string;
   role: string[];
@@ -16,9 +22,10 @@ type Work = {
 
 const worksData: Work[] = [
   {
+    categorie: "単独フロントエンド実装案件",
     title: "菊乃井 室礼",
     url: "https://kikunoi.jp/shitsurae/",
-    categories: ["スペシャルサイト", "新規制作"],
+    tags: ["スペシャルサイト", "新規制作"],
     period: "2025年",
     overview:
       "料亭のスペシャルサイトの新規構築案件。フロントエンド実装全般を担当し、慣性スクロールやスクロール連動アニメーションを取り入れることで、高級感や特別感のある演出を実現しました。",
@@ -42,14 +49,10 @@ const worksData: Work[] = [
     ],
   },
   {
+    categorie: "協業フロントエンド実装案件",
     title: "PROMASTER ブランドサイト・その他関連サイト",
     url: "https://citizen.jp/promaster/special/index.html",
-    categories: [
-      "ブランドサイト",
-      "リニューアル",
-      "スペシャルサイト",
-      "新規制作",
-    ],
+    tags: ["ブランドサイト", "リニューアル", "スペシャルサイト", "新規制作"],
     period: "2019年〜2026年",
     overview:
       "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、フロントエンド実装やWebディレクションも行いました。",
@@ -71,9 +74,10 @@ const worksData: Work[] = [
     ],
   },
   {
+    categorie: "参画フロントエンド支援案件",
     title: "ジャフコ グループ株式会社",
     url: "https://www.jafco.co.jp/",
-    categories: ["ブランドサイト", "リニューアル"],
+    tags: ["ブランドサイト", "リニューアル"],
     period: "2019年〜2026年",
     overview:
       "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
@@ -87,9 +91,10 @@ const worksData: Work[] = [
     technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
   },
   {
+    categorie: "CMS構築案件",
     title: "秋桜会クリニック",
     url: "https://kosumosukai-clinic.jp/",
-    categories: ["病院サイト", "リニューアル", "Wordpress"],
+    tags: ["病院サイト", "リニューアル", "Wordpress"],
     period: "2019年〜2026年",
     overview:
       "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
@@ -103,9 +108,10 @@ const worksData: Work[] = [
     technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
   },
   {
+    categorie: "ECサイト構築案件",
     title: "洞川温泉醸造所",
     url: "https://yama-beer.com/",
-    categories: ["ブランドサイト", "リニューアル", "カラーミー"],
+    tags: ["ブランドサイト", "リニューアル", "カラーミー"],
     period: "2019年〜2026年",
     overview:
       "メーカー様のブランドサイトやLPの制作・更新を担当。他社のディレクターやデザイナーと連携し、コーディングやWebディレクションも行いました。",
@@ -119,6 +125,21 @@ const worksData: Work[] = [
     technologies: ["HTML", "Sass", "EJS", "Astro", "JavaScript", "TypeScript"],
   },
 ];
+
+const groupedWorks: WorksGroup[] = worksData.reduce((acc, work) => {
+  const group = acc.find((g) => g.category === work.categorie);
+
+  if (group) {
+    group.items.push(work);
+  } else {
+    acc.push({
+      category: work.categorie,
+      items: [work],
+    });
+  }
+
+  return acc;
+}, [] as WorksGroup[]);
 ---
 
 <section id="works">
@@ -134,15 +155,15 @@ const worksData: Work[] = [
               class="item"
               data-index={index}
               aria-haspopup="dialog"
-              aria-label={`${work.title}の詳細を見る`}
+              aria-label={`${work.categorie}の詳細を見る`}
             >
-              <h3>{work.title}</h3>
+              <h3>{work.categorie}</h3>
               <Img
                 srcPaths={[
                   `pages/works-${index + 1}_pc.jpg`,
                   `pages/works-${index + 1}_sp.jpg`,
                 ]}
-                alt={work.title}
+                alt={work.categorie}
                 classNames="image"
               />
             </button>
@@ -156,28 +177,35 @@ const worksData: Work[] = [
 {
   worksData.map((work, index) => (
     <dialog id={`modal-${index}`} class="modal">
+      <div class="modal-side">
+        <p class="num">01</p>
+        <p class="cat">{work.categorie}</p>
+      </div>
       <div class="modal-inner">
-        <Img
-          srcPaths={[
-            `pages/works-${index + 1}_pc.jpg`,
-            `pages/works-${index + 1}_sp.jpg`,
-          ]}
-          alt={work.title}
-          classNames="modal-image"
-        />
+        <div class="modal-image">
+          <a href={work.url} target="_blank" rel="noopener noreferrer">
+            <Img
+              srcPaths={[
+                `pages/works-${index + 1}_pc.jpg`,
+                `pages/works-${index + 1}_sp.jpg`,
+              ]}
+              alt={work.title}
+            />
+          </a>
+        </div>
         <div class="modal-cont">
-          <button class="modal-close" aria-label="閉じる">
-            <span />
-            <span />
-          </button>
-          <p class="modal-index">{String(index + 1).padStart(2, "0")}</p>
-          <h3 class="modal-title">
-            <a href={work.url} target="_blank" rel="noopener noreferrer">
-              {work.title}
-            </a>
-          </h3>
-          <ul class="modal-categories">
-            {work.categories.map((c) => (
+          {/* <p class="modal-index">{String(index + 1).padStart(2, "0")}</p> */}
+          <h3 class="modal-title">{work.title}</h3>
+          <a
+            href={work.url}
+            class="modal-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {work.url}
+          </a>
+          <ul class="modal-tags">
+            {work.tags.map((c) => (
               <li>{c}</li>
             ))}
           </ul>
@@ -210,6 +238,17 @@ const worksData: Work[] = [
           </dl>
         </div>
       </div>
+      <div class="modal-button">
+        <button class="modal-prev" aria-label="前へ" />
+        <p class="modal-pager">
+          <span>1</span>/<span>4</span>
+        </p>
+        <button class="modal-next" aria-label="次へ" />
+      </div>
+      <button class="modal-close" aria-label="閉じる">
+        <span />
+        <span />
+      </button>
     </dialog>
   ))
 }
